@@ -9,9 +9,11 @@ const ProductCard = ({ data }) => {
         console.log(data);
       }}
     >
-      <img src={data.image} />
-      <h1>{data.title.toUpperCase()}</h1>
       <div>
+        <img src={data.image} />
+      </div>
+      <div className={styles.ProductDetails}>
+        <h1>{data.title.toUpperCase()}</h1>
         <h3>{`$${data.price}`}</h3>
       </div>
     </div>

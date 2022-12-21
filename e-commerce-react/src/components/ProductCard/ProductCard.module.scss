@@ -1,16 +1,22 @@
 .ProductCard {
-  border: 2px solid white;
   padding: 2rem;
   border-radius: 2rem;
-  width: 15rem;
+  border: 2px solid white;
+  width: 25rem;
   font-size: 0.8rem;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .ProductCard img {
   width: 10rem;
 }
 
+.ProductDetails {
+  text-align: left;
+}
 .ProductCard:hover {
   box-shadow: 0 0 20px;
   transition: 0.1s box-shadow ease-in-out;

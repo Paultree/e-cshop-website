@@ -5,8 +5,7 @@ import { useState, useEffect } from "react";
 import styles from "./HomePage.module.scss";
 
 const HomePage = () => {
-  const [carouselProducts, setCarouselProducts] = useState([]);
-  const [gridProducts, setGridProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const fetchProductsData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -15,11 +14,11 @@ const HomePage = () => {
 
   const renderProducts = async () => {
     const productArr = await fetchProductsData();
-    setGridProducts(productArr);
-    const carouselArr = productArr.filter((product) => {
-      return product.id < 6;
+
+    const womensArr = productArr.filter((product) => {
+      return product.category === "women's clothing";
     });
-    setCarouselProducts(carouselArr);
+    setProducts(womensArr);
   };
 
   useEffect(() => {
@@ -28,9 +27,9 @@ const HomePage = () => {
 
   return (
     <div>
-      <CarouselPage data={carouselProducts} className={styles.HomePage} />
+      <CarouselPage data={products} className={styles.HomePage} />
       <h1>ITEMS</h1>
-      <ProductGrid data={gridProducts} />
+      <ProductGrid data={products} />
     </div>
   );
 };
