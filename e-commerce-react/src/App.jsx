@@ -4,25 +4,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import ProductPage from "./containers/ProductPage/ProductPage";
 import { useEffect, useState } from "react";
+import { getProducts } from "./services/products";
 
 function App() {
   const [products, setProducts] = useState([]);
 
-  const fetchProductsData = async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
-    return response.json();
-  };
-
-  const renderProducts = async () => {
-    const productArr = await fetchProductsData();
-
-    const womensArr = productArr.filter((product) => {
-      return product.category === "women's clothing";
-    });
-    setProducts(womensArr);
-  };
-
   useEffect(() => {
+    const renderProducts = async () => {
+      const allProducts = await getProducts();
+      setProducts(allProducts);
+    };
     renderProducts();
   }, []);
 

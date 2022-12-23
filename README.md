@@ -7,7 +7,7 @@ This project is designed to reinforce your React learnings and make sure that yo
 With this project you will practice how to:
 
 - Fetch Data within a React App - [x]
-- Use react-router-dom - []
+- Use react-router-dom - [x]
 - Use Firebase/Firestore - []
 
 ## MVP
@@ -21,13 +21,13 @@ At a minimum your e-shop website should have two pages:
     - Product Page (with id parameter) Similar to a product page on another site, allows you to add to cart and select product variants - [x]
 - All products should be stored in Firestore:
   - You should store the following information:
-    - quantity - []
-    - variants (could be colors, sizes, etc) - []
-    - price per unit - []
-    - name - []
-    - image url - []
+    - quantity - [x]
+    - variants (could be colors, sizes, etc) - [x]
+    - price per unit - [x]
+    - name - [x]
+    - image url - [x]
     - favourited or not (boolean) - []
-      All data should be stored in Firestore and fetched by the frontend, there should be NO static product data in the react application - []
+      All data should be stored in Firestore and fetched by the frontend, there should be NO static product data in the react application - [x]
 
 ### Bonus - Required
 
@@ -35,8 +35,8 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
 
 - List of products in cart
 
-  - Ability to change quantity of products in cart
-  - Ability to remove items from cart
+  - Ability to change quantity of products in cart - []
+  - Ability to remove items from cart - []
 
 - TIPS :
 
@@ -78,3 +78,14 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
   - Product in grid are able to be clicked on and brings user to product page - implemented via react-router-dom
 - Shopping cart page to be done.
 - Firebase/Firestore to be done.
+
+23/12/2022
+
+- Cloud firebase was created.
+  - Currently only 4 product items in the products collection. Keeping the collection small to focus on practice on fetching data from database.
+  - We will need to create a new collection that stores data of shopping cart.
+- Re-wrote code to utilise database information instead of an API.
+- the Add to cart button will handle this logic:
+  - when user clicks add to bag, stores the products collection id, size chosen and quantity in a shopping cart collection?
+  - will also decrement available quantity in products collection.
+  - shopping cart will contain shopping item components which will render name, image, size, quantity (value stored in shopping cart collection) and user will be able to update quantity (availability will be pulled from products collection) - attached to a button, another button that lets user delete item from shopping cart - doing so reverts the quantity count stored in products collection

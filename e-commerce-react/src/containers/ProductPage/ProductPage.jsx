@@ -9,17 +9,18 @@ const ProductPage = ({ data }) => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    const productData = data.find((prod) => prod.id === parseInt(id));
+    const productData = data.find((prod) => prod.id === id);
 
     setProduct(productData);
   }, [id, data]);
+
   return product ? (
     <div className={styles.ProductPage}>
       <div className={styles.ProductImage}>
         <img src={product.image} />
       </div>
       <div>
-        <h1>{product.title}</h1>
+        <h1>{product.name}</h1>
         <p>{product.description}</p>
         <h2>{`$${product.price}`}</h2>
         <form
@@ -29,9 +30,14 @@ const ProductPage = ({ data }) => {
         >
           <label htmlFor="size">SIZE </label>
           <select id="size" name="size">
-            <option value="small">SMALL</option>
-            <option value="medium">MEDIUM</option>
-            <option value="large">LARGE</option>
+            {product.size &&
+              product.size.map((size, index) => {
+                return (
+                  <option key={index} value={size}>
+                    {size}
+                  </option>
+                );
+              })}
           </select>
           <label htmlFor="quantity">QUANTITY</label>
           <input
@@ -39,7 +45,7 @@ const ProductPage = ({ data }) => {
             type="number"
             defaultValue={1}
             min={1}
-            max={10}
+            max={product.quantity}
           />
           <button>ADD TO CART</button>
         </form>
