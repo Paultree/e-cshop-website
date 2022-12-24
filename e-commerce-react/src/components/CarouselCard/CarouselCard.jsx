@@ -12,7 +12,7 @@ const CarouselCard = ({ data }) => {
 
   return (
     <div style={backgroundStyle} className={styles.CarouselCard}>
-      <h1>{data.name.toUpperCase()}</h1>
+      <h1>{data.title.toUpperCase()}</h1>
     </div>
   );
 };

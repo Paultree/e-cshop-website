@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ProductPage from "./containers/ProductPage/ProductPage";
 import { useEffect, useState } from "react";
 import { getProducts } from "./services/products";
+import ShoppingCartProvider from "./context/ShoppingCartContext";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -18,16 +19,18 @@ function App() {
   }, []);
 
   return (
-    <div className={styles.App}>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<HomePage data={products} />} />
-          <Route path="/:id" element={<ProductPage data={products} />} />
-          {/* <Route path='/cart' element={<ShoppingCart />} /> */}
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <ShoppingCartProvider>
+      <div className={styles.App}>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<HomePage data={products} />} />
+            <Route path="/:id" element={<ProductPage data={products} />} />
+            {/* <Route path='/cart' element={<ShoppingCart />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </ShoppingCartProvider>
   );
 }
 

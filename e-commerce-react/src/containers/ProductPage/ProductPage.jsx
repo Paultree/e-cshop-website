@@ -2,11 +2,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 import styles from "./ProductPage.module.scss";
 import { useParams } from "react-router-dom";
+import { addToCart } from "../../services/products";
 
 const ProductPage = ({ data }) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
+
+  console.log(product);
 
   useEffect(() => {
     const productData = data.find((prod) => prod.id === id);
@@ -14,20 +17,33 @@ const ProductPage = ({ data }) => {
     setProduct(productData);
   }, [id, data]);
 
+  const [newProduct, setNewProduct] = useState({});
+
+  console.log(newProduct);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const productForm = {
+      id: product.id,
+      title: product.title,
+      price: Number(product.price),
+      image: product.image,
+      quantity: Number(e.target.quantity.value),
+      size: e.target.size.value,
+    };
+    return await addToCart(productForm);
+  };
+
   return product ? (
     <div className={styles.ProductPage}>
       <div className={styles.ProductImage}>
         <img src={product.image} />
       </div>
       <div>
-        <h1>{product.name}</h1>
+        <h1>{product.title}</h1>
         <p>{product.description}</p>
         <h2>{`$${product.price}`}</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
+        <form onSubmit={handleSubmit}>
           <label htmlFor="size">SIZE </label>
           <select id="size" name="size">
             {product.size &&
@@ -42,6 +58,7 @@ const ProductPage = ({ data }) => {
           <label htmlFor="quantity">QUANTITY</label>
           <input
             name="quantity"
+            id="quantity"
             type="number"
             defaultValue={1}
             min={1}

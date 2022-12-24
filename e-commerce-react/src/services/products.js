@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../firestore";
 
 export const getProducts = async () => {
@@ -10,4 +10,12 @@ export const getProducts = async () => {
     return { id, ...restOfData };
   });
   return data;
+};
+
+export const addToCart = async (data) => {
+  const { title, image, price, size, quantity } = data;
+  const cartItem = { title, image, price, size, quantity };
+  const docRef = doc(db, "shoppingCart", data.id);
+  const newDoc = await setDoc(docRef, cartItem);
+  return newDoc;
 };
