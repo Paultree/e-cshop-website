@@ -10,7 +10,7 @@ import ShoppingCartProvider from "./context/ShoppingCartContext";
 function App() {
   const [products, setProducts] = useState([]);
 
-  const [clicked, setClicked] = useState(0);
+  const [clicked, setClicked] = useState(true);
 
   useEffect(() => {
     const renderProducts = async () => {
@@ -21,8 +21,7 @@ function App() {
   }, [clicked]);
 
   const handleRender = () => {
-    setClicked(clicked + 1);
-    console.log(clicked);
+    setClicked(!clicked);
   };
 
   return (

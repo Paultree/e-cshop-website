@@ -1,21 +1,23 @@
 import React, { useEffect } from "react";
 import { getFavourite, updateFavourited } from "../../services/products";
 import { useState } from "react";
+import styles from "./FavouriteButton.module.scss";
 
 const FavouriteButton = ({ data, clicked }) => {
   const fave = data.favourited ? "Favourited" : "Favourite";
 
-  const handleClick = async () => {
-    clicked();
-    await updateFavourited(data);
+  const faveClass = data.favourited ? styles.Favourited : styles.NotFavourited;
 
-    const stat = await getFavourite(data);
-    console.log(stat);
+  const handleClick = async () => {
+    await updateFavourited(data);
+    clicked();
   };
 
   return (
     <>
-      <button onClick={handleClick}>{fave}</button>
+      <button className={faveClass} onClick={handleClick}>
+        {fave}
+      </button>
     </>
   );
 };
