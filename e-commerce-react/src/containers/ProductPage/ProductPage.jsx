@@ -2,11 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import styles from "./ProductPage.module.scss";
 import { useParams } from "react-router-dom";
-import {
-  addToCart,
-  getFavourite,
-  updateFavourited,
-} from "../../services/products";
+import { addToCart } from "../../services/products";
 import FavouriteButton from "../../components/FavouriteButton/FavouriteButton";
 
 const ProductPage = ({ data, clicked }) => {

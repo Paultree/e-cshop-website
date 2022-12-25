@@ -18,6 +18,10 @@ button {
   margin: 1rem;
 }
 
+button:active {
+  background-color: black;
+}
+
 form > select {
   text-align: center;
 }

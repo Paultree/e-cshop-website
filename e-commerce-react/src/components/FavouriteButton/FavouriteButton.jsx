@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { getFavourite, updateFavourited } from "../../services/products";
-import { useState } from "react";
+import { updateFavourited } from "../../services/products";
+
 import styles from "./FavouriteButton.module.scss";
 
 const FavouriteButton = ({ data, clicked }) => {
-  const fave = data.favourited ? "Favourited" : "Favourite";
+  const fave = data.favourited ? "FAVOURITED" : "FAVOURITE";
 
   const faveClass = data.favourited ? styles.Favourited : styles.NotFavourited;
 
