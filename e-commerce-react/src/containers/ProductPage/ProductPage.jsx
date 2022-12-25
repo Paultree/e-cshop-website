@@ -2,24 +2,23 @@ import React from "react";
 import { useEffect, useState } from "react";
 import styles from "./ProductPage.module.scss";
 import { useParams } from "react-router-dom";
-import { addToCart } from "../../services/products";
+import {
+  addToCart,
+  getFavourite,
+  updateFavourited,
+} from "../../services/products";
+import FavouriteButton from "../../components/FavouriteButton/FavouriteButton";
 
-const ProductPage = ({ data }) => {
+const ProductPage = ({ data, clicked }) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
-
-  console.log(product);
 
   useEffect(() => {
     const productData = data.find((prod) => prod.id === id);
 
     setProduct(productData);
-  }, [id, data]);
-
-  const [newProduct, setNewProduct] = useState({});
-
-  console.log(newProduct);
+  }, [data, id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +37,7 @@ const ProductPage = ({ data }) => {
     <div className={styles.ProductPage}>
       <div className={styles.ProductImage}>
         <img src={product.image} />
+        <FavouriteButton data={product} clicked={clicked} />
       </div>
       <div>
         <h1>{product.title}</h1>

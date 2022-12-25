@@ -26,7 +26,7 @@ At a minimum your e-shop website should have two pages:
     - price per unit - [x]
     - name - [x]
     - image url - [x]
-    - favourited or not (boolean) - []
+    - favourited or not (boolean) - [x]
       All data should be stored in Firestore and fetched by the frontend, there should be NO static product data in the react application - [x]
 
 ### Bonus - Required
@@ -86,6 +86,16 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
   - We will need to create a new collection that stores data of shopping cart.
 - Re-wrote code to utilise database information instead of an API.
 - the Add to cart button will handle this logic:
+
   - when user clicks add to bag, stores the products collection id, size chosen and quantity in a shopping cart collection?
   - will also decrement available quantity in products collection.
   - shopping cart will contain shopping item components which will render name, image, size, quantity (value stored in shopping cart collection) and user will be able to update quantity (availability will be pulled from products collection) - attached to a button, another button that lets user delete item from shopping cart - doing so reverts the quantity count stored in products collection
+
+  24/12/2022
+
+  - Implementing setDoc to 'add to cart' button rather than addDoc:
+    - This is because setDoc only adds to database if the document does not yet exist in the database. If it does, it simply overwrites the information.
+
+25/12/2022
+
+- Used a state counter that would trigger anytime the favourite button was clicked. Used the state as a dependency for useEffect in App.jsx so that once an item is favourited, counter state changes which causes the useEffect in App.jsx to trigger (fetches updated data from firestore) and re-renders the favourite button.

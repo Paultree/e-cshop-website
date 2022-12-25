@@ -10,13 +10,20 @@ import ShoppingCartProvider from "./context/ShoppingCartContext";
 function App() {
   const [products, setProducts] = useState([]);
 
+  const [clicked, setClicked] = useState(0);
+
   useEffect(() => {
     const renderProducts = async () => {
       const allProducts = await getProducts();
       setProducts(allProducts);
     };
     renderProducts();
-  }, []);
+  }, [clicked]);
+
+  const handleRender = () => {
+    setClicked(clicked + 1);
+    console.log(clicked);
+  };
 
   return (
     <ShoppingCartProvider>
@@ -25,7 +32,10 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<HomePage data={products} />} />
-            <Route path="/:id" element={<ProductPage data={products} />} />
+            <Route
+              path="/:id"
+              element={<ProductPage data={products} clicked={handleRender} />}
+            />
             {/* <Route path='/cart' element={<ShoppingCart />} /> */}
           </Routes>
         </BrowserRouter>
