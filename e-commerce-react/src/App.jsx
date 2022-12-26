@@ -4,11 +4,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import ProductPage from "./containers/ProductPage/ProductPage";
 import { useEffect, useState } from "react";
-import { getProducts } from "./services/products";
+import { getProducts, getShoppingCart } from "./services/products";
 import ShoppingCartProvider from "./context/ShoppingCartContext";
+import ShoppingCartPage from "./containers/ShoppingCartPage/ShoppingCartPage";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [shopCart, setShopCart] = useState([]);
 
   const [clicked, setClicked] = useState(true);
 
@@ -20,6 +22,14 @@ function App() {
     renderProducts();
   }, [clicked]);
 
+  useEffect(() => {
+    const renderCart = async () => {
+      const allItems = await getShoppingCart();
+      setShopCart(allItems);
+    };
+    renderCart();
+  }, [clicked]);
+
   const handleRender = () => {
     setClicked(!clicked);
   };
@@ -28,14 +38,25 @@ function App() {
     <ShoppingCartProvider>
       <div className={styles.App}>
         <BrowserRouter>
-          <NavBar />
+          <NavBar data={shopCart} />
           <Routes>
             <Route path="/" element={<HomePage data={products} />} />
             <Route
               path="/:id"
-              element={<ProductPage data={products} clicked={handleRender} />}
+              element={
+                <ProductPage
+                  data={products}
+                  updateRender={handleRender}
+                  clicked={handleRender}
+                />
+              }
             />
-            {/* <Route path='/cart' element={<ShoppingCart />} /> */}
+            <Route
+              path="/cart"
+              element={
+                <ShoppingCartPage data={shopCart} fullRender={handleRender} />
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>

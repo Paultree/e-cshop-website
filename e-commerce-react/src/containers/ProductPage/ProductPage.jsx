@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { addToCart } from "../../services/products";
 import FavouriteButton from "../../components/FavouriteButton/FavouriteButton";
 
-const ProductPage = ({ data, clicked }) => {
+const ProductPage = ({ data, clicked, updateRender }) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
@@ -26,7 +26,9 @@ const ProductPage = ({ data, clicked }) => {
       quantity: Number(e.target.quantity.value),
       size: e.target.size.value,
     };
-    return await addToCart(productForm);
+
+    await addToCart(productForm);
+    return updateRender();
   };
 
   return product ? (
@@ -60,7 +62,13 @@ const ProductPage = ({ data, clicked }) => {
             min={1}
             max={product.quantity}
           />
-          <button>ADD TO CART</button>
+          <div>
+            {product.quantity > 0 ? (
+              <button>ADD TO CART</button>
+            ) : (
+              <button disabled={true}>SOLD OUT</button>
+            )}
+          </div>
         </form>
       </div>
     </div>
