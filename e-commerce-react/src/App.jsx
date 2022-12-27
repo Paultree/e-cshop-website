@@ -5,7 +5,6 @@ import NavBar from "./components/NavBar/NavBar";
 import ProductPage from "./containers/ProductPage/ProductPage";
 import { useEffect, useState } from "react";
 import { getProducts, getShoppingCart } from "./services/products";
-import ShoppingCartProvider from "./context/ShoppingCartContext";
 import ShoppingCartPage from "./containers/ShoppingCartPage/ShoppingCartPage";
 
 function App() {
@@ -35,32 +34,30 @@ function App() {
   };
 
   return (
-    <ShoppingCartProvider>
-      <div className={styles.App}>
-        <BrowserRouter>
-          <NavBar data={shopCart} />
-          <Routes>
-            <Route path="/" element={<HomePage data={products} />} />
-            <Route
-              path="/:id"
-              element={
-                <ProductPage
-                  data={products}
-                  updateRender={handleRender}
-                  clicked={handleRender}
-                />
-              }
-            />
-            <Route
-              path="/cart"
-              element={
-                <ShoppingCartPage data={shopCart} fullRender={handleRender} />
-              }
-            />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </ShoppingCartProvider>
+    <div className={styles.App}>
+      <BrowserRouter>
+        <NavBar data={shopCart} />
+        <Routes>
+          <Route path="/" element={<HomePage data={products} />} />
+          <Route
+            path="/:id"
+            element={
+              <ProductPage
+                data={products}
+                updateRender={handleRender}
+                clicked={handleRender}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ShoppingCartPage data={shopCart} fullRender={handleRender} />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

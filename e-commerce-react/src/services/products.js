@@ -6,6 +6,7 @@ import {
   getDocs,
   getDoc,
   increment,
+  deleteDoc,
 } from "firebase/firestore";
 import { db } from "../firestore";
 
@@ -109,6 +110,16 @@ export const maxCart = async (data) => {
   const cartRef = doc(db, "shoppingCart", `${data.title}${data.size}`);
   const cartSnap = await getDoc(cartRef);
   const cartObj = cartSnap.data();
-  console.log(prodObj.quantity, cartObj.quantity);
   return prodObj.quantity + Number(cartObj.quantity);
+};
+
+export const deleteItem = async (data) => {
+  const productRef = doc(db, "products", data.index);
+  const prodSnap = await getDoc(productRef);
+  const prodObj = prodSnap.data();
+  await updateDoc(productRef, {
+    quantity: prodObj.quantity + data.quantity,
+  });
+  const shoppingItemRef = doc(db, "shoppingCart", `${data.title}${data.size}`);
+  return await deleteDoc(shoppingItemRef);
 };

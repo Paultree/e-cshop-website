@@ -8,7 +8,7 @@ With this project you will practice how to:
 
 - Fetch Data within a React App - [x]
 - Use react-router-dom - [x]
-- Use Firebase/Firestore - []
+- Use Firebase/Firestore - [x]
 
 ## MVP
 
@@ -35,8 +35,8 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
 
 - List of products in cart
 
-  - Ability to change quantity of products in cart - []
-  - Ability to remove items from cart - []
+  - Ability to change quantity of products in cart - [x]
+  - Ability to remove items from cart - [x]
 
 - TIPS :
 
@@ -99,3 +99,21 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
 25/12/2022
 
 - Used a state counter that would trigger anytime the favourite button was clicked. Used the state as a dependency for useEffect in App.jsx so that once an item is favourited, counter state changes which causes the useEffect in App.jsx to trigger (fetches updated data from firestore) and re-renders the favourite button.
+- Modified the addToCart code to id each cart item by name-size naming convention.
+  - Allows user to have similar items in cart but different size.
+  - We are still retaining the 5 quantity count.
+
+26/12/2022
+
+- Used state counter to update product page once product sells out.
+- Implemented increment method from firestore to increment shopping cart quantity and decrement product quantity
+- Implemented update cart button onto shopping cart.
+
+28/12/2022
+
+- Implemented a delete item feature via a button.
+- Used the deleteDoc method provided by firestore.
+- Added in a total price section of the HTML in Shoppingcartpage.
+- Need to try and clean up code in firestore.js.
+- Also will need to rename some functions and state variables to improve readability.
+- Also try and implement some comments.

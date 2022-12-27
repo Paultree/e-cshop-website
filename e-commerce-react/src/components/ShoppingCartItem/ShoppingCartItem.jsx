@@ -1,7 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { maxCart, updateCartQuantity } from "../../services/products";
+import {
+  maxCart,
+  updateCartQuantity,
+  deleteItem,
+} from "../../services/products";
 import styles from "./ShoppingCartItem.module.scss";
 
 const ShoppingCart = ({ data, fullRender }) => {
@@ -24,13 +28,16 @@ const ShoppingCart = ({ data, fullRender }) => {
   const updateQuantity = async (e) => {
     e.preventDefault();
     const update = await updateCartQuantity(data, e.target.quantity.value);
-    console.log(update);
     setCartQuan(update);
     rerender();
     fullRender();
   };
 
-  console.log(cartQuan);
+  const handleDelete = async () => {
+    await deleteItem(data);
+    rerender();
+    fullRender();
+  };
 
   return (
     <div className={styles.ShoppingCartItem}>
@@ -54,7 +61,7 @@ const ShoppingCart = ({ data, fullRender }) => {
           />
           <button>Update</button>
         </form>
-        <button>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );
