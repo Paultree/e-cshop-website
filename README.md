@@ -1,5 +1,17 @@
 # React e-cShop Website
 
+## Image
+
+![Alt Text](project-demo.gif)
+
+## Link
+
+## Setup
+
+- npm create vite@latest
+- npm i sass
+- npm i react-router-dom
+
 ## Outline
 
 This project is designed to reinforce your React learnings and make sure that you are comfortable with most aspect of the framework.
@@ -47,6 +59,8 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
 - [React-router-dom](https://reactrouter.com/docs/en/v6/getting-started/overview)
 - [Dummy JSON](https://dummyjson.com/)
 - [Fake Store](https://fakestoreapi.com/)
+
+## Approach
 
 20/12/2022
 
@@ -117,3 +131,19 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
 - Need to try and clean up code in firestore.js.
 - Also will need to rename some functions and state variables to improve readability.
 - Also try and implement some comments.
+
+## Reflection
+
+## Future Goals
+
+- add a favourite button as a heart.
+- add a favourites page
+- add a search function
+
+## Further Reading
+
+## Stay in Touch
+
+## Licence
+
+## Contribution
