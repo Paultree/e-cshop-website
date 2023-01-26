@@ -9,8 +9,8 @@ const NavBar = ({ data }) => {
       : `${styles.Nav_Link}`;
 
   return (
-    <nav>
-      <h1>PROJECT CLOTHING</h1>
+    <nav className={styles.NavBar}>
+      <h1>P R _ J E C T C L _ T H I N G </h1>
       <NavLink className={activeStyle} to="/">
         HOME
       </NavLink>

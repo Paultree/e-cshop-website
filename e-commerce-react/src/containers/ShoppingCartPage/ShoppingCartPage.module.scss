@@ -1,0 +1,7 @@
+.ShoppingCartPage {
+  padding: 5rem;
+  & > h2 {
+    text-align: right;
+    padding-right: 1rem;
+  }
+}

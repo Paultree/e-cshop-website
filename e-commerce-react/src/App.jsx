@@ -44,15 +44,18 @@ function App() {
             element={
               <ProductPage
                 data={products}
-                updateRender={handleRender}
-                clicked={handleRender}
+                renderProdPage={handleRender}
+                rerenderFavourite={handleRender}
               />
             }
           />
           <Route
             path="/cart"
             element={
-              <ShoppingCartPage data={shopCart} fullRender={handleRender} />
+              <ShoppingCartPage
+                data={shopCart}
+                renderShoppingItem={handleRender}
+              />
             }
           />
         </Routes>

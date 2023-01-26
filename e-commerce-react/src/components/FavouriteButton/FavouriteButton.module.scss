@@ -1,7 +1,7 @@
 .Favourited {
-  background: black;
+  background: red;
   color: white;
-  border-color: white;
+  border-color: red;
 }
 
 .NotFavourited {
@@ -14,4 +14,5 @@ button {
   width: 10rem;
   border-radius: 1rem;
   border: 1px solid;
+  cursor: pointer;
 }

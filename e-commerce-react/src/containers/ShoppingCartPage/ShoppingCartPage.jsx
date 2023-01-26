@@ -1,12 +1,19 @@
 import React from "react";
-import ShoppingCart from "../../components/ShoppingCartItem/ShoppingCartItem";
+import ShoppingCartItem from "../../components/ShoppingCartItem/ShoppingCartItem";
+import styles from "./ShoppingCartPage.module.scss";
 
-const ShoppingCartPage = ({ data, fullRender }) => {
+const ShoppingCartPage = ({ data, renderShoppingItem }) => {
   console.log(data);
   return data.length > 0 ? (
-    <div>
+    <div className={styles.ShoppingCartPage}>
       {data.map((item, index) => {
-        return <ShoppingCart key={index} data={item} fullRender={fullRender} />;
+        return (
+          <ShoppingCartItem
+            key={index}
+            data={item}
+            renderShoppingItem={renderShoppingItem}
+          />
+        );
       })}
       <h2>
         Total Price: $
@@ -20,7 +27,9 @@ const ShoppingCartPage = ({ data, fullRender }) => {
       </h2>
     </div>
   ) : (
-    <div>THERE IS CURRENTLY NOTHING IN YOUR CART.</div>
+    <div className={styles.ShoppingCartPage}>
+      THERE IS CURRENTLY NOTHING IN YOUR CART.
+    </div>
   );
 };
 

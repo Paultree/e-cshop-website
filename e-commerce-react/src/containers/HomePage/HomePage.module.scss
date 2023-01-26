@@ -1,0 +1,10 @@
+.HomePage {
+  &_Grid {
+    margin-top: 10rem;
+    padding: 0 10rem;
+    & > h1 {
+      text-align: left;
+      padding-left: 10rem;
+    }
+  }
+}

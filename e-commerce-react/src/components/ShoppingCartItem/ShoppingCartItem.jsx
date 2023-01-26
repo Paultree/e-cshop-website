@@ -2,24 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import {
-  maxCart,
+  renderMaxCart,
   updateCartQuantity,
-  deleteItem,
+  deleteCartItem,
 } from "../../services/products";
 import styles from "./ShoppingCartItem.module.scss";
 
-const ShoppingCart = ({ data, fullRender }) => {
+const ShoppingCartItem = ({ data, renderShoppingItem }) => {
   const [cartQuan, setCartQuan] = useState(0);
-
-  const [render, setRender] = useState(false);
-
-  const rerender = () => {
-    setRender(!render);
-  };
 
   useEffect(() => {
     const wrapper = async () => {
-      const number = await maxCart(data);
+      const number = await renderMaxCart(data);
       setCartQuan(number);
     };
     wrapper();
@@ -29,14 +23,12 @@ const ShoppingCart = ({ data, fullRender }) => {
     e.preventDefault();
     const update = await updateCartQuantity(data, e.target.quantity.value);
     setCartQuan(update);
-    rerender();
-    fullRender();
+    renderShoppingItem();
   };
 
   const handleDelete = async () => {
-    await deleteItem(data);
-    rerender();
-    fullRender();
+    await deleteCartItem(data);
+    renderShoppingItem();
   };
 
   return (
@@ -67,4 +59,4 @@ const ShoppingCart = ({ data, fullRender }) => {
   );
 };
 
-export default ShoppingCart;
+export default ShoppingCartItem;

@@ -3,8 +3,23 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import CarouselCard from "../CarouselCard/CarouselCard";
 import styles from "./CarouselPage.module.scss";
+import {
+  carouselOne,
+  carouselTwo,
+  carouselThree,
+  carouselFour,
+  carouselFive,
+} from "../../assets/carousel";
 
-const CarouselPage = ({ data }) => {
+const CarouselPage = () => {
+  const carouselImages = [
+    carouselOne,
+    carouselTwo,
+    carouselThree,
+    carouselFour,
+    carouselFive,
+  ];
+
   return (
     <Carousel
       autoPlay
@@ -15,8 +30,8 @@ const CarouselPage = ({ data }) => {
       showStatus={false}
       className={styles.CarouselPage}
     >
-      {data.map((product, index) => {
-        return <CarouselCard data={product} key={index} />;
+      {carouselImages.map((data, index) => {
+        return <CarouselCard data={data} key={index} />;
       })}
     </Carousel>
   );

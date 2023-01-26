@@ -9,8 +9,8 @@ const ProductCard = ({ data }) => {
         <img src={data.image} />
       </div>
       <div className={styles.ProductDetails}>
-        <h1>{data.title.toUpperCase()}</h1>
-        <h3>{`$${data.price}`}</h3>
+        <h4>{data.title.toUpperCase()}</h4>
+        <p>{`$${data.price}`}</p>
       </div>
     </NavLink>
   );

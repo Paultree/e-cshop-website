@@ -2,16 +2,7 @@
   display: flex;
   width: 50%;
   margin: 2rem auto;
-  gap: 2rem;
-}
-
-img {
-  width: 25rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
+  gap: 10rem;
 }
 
 button {
@@ -19,22 +10,32 @@ button {
   padding: 1rem;
 }
 
-button:active {
+.AddButton > button:active {
   background-color: black;
 }
 
-button:disabled {
+.AddButton > button:disabled {
   color: white;
 }
 
-button:disabled:active {
+.AddButton > button:disabled:active {
   background-color: #b8b4b4;
+}
+
+.ProductImage {
+  & > img {
+    width: 30rem;
+  }
+}
+
+.ProductDetails {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 form > select {
   text-align: center;
-}
-
-form > input {
-  text-align: center;
+  width: 47.5%;
 }

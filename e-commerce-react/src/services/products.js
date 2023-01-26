@@ -102,8 +102,8 @@ export const updateCartQuantity = async (data, value) => {
   });
   return prodObj.quantity + Number(cartObj.quantity);
 };
-
-export const maxCart = async (data) => {
+//above updates quantity value for same item in shopping cart collection and inventory/products collection.
+export const renderMaxCart = async (data) => {
   const productRef = doc(db, "products", data.index);
   const prodSnap = await getDoc(productRef);
   const prodObj = prodSnap.data();
@@ -112,8 +112,8 @@ export const maxCart = async (data) => {
   const cartObj = cartSnap.data();
   return prodObj.quantity + Number(cartObj.quantity);
 };
-
-export const deleteItem = async (data) => {
+//above is to update the max amount of items a user can try and buy. for example, if user only has 1 item in cart but wants another size but same item, instead of max quantity showing 5, it will show 4.
+export const deleteCartItem = async (data) => {
   const productRef = doc(db, "products", data.index);
   const prodSnap = await getDoc(productRef);
   const prodObj = prodSnap.data();
