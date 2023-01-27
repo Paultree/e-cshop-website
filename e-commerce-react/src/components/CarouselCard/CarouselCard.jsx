@@ -4,8 +4,9 @@ import styles from "./CarouselCard.module.scss";
 const CarouselCard = ({ data }) => {
   const backgroundStyle = {
     backgroundImage: `url(${data.image})`,
-    height: "45rem",
+    height: "25rem",
     backgroundSize: "cover",
+    backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     color: "#242424",
   };
