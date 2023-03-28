@@ -4,12 +4,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import ProductPage from "./containers/ProductPage/ProductPage";
 import { useEffect, useState } from "react";
-import { getProducts, getShoppingCart } from "./services/products";
+import {
+  getFavourites,
+  getProducts,
+  getShoppingCart,
+} from "./services/products";
 import ShoppingCartPage from "./containers/ShoppingCartPage/ShoppingCartPage";
+import FavouritePage from "./containers/FavouritePage/FavouritePage";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [shopCart, setShopCart] = useState([]);
+  const [favourites, setFavourites] = useState([]);
 
   const [clicked, setClicked] = useState(true);
 
@@ -27,6 +33,14 @@ function App() {
       setShopCart(allItems);
     };
     renderCart();
+  }, [clicked]);
+
+  useEffect(() => {
+    const renderFavourites = async () => {
+      const allFavourites = await getFavourites();
+      setFavourites(allFavourites);
+    };
+    renderFavourites();
   }, [clicked]);
 
   const handleRender = () => {
@@ -57,6 +71,10 @@ function App() {
                 renderShoppingItem={handleRender}
               />
             }
+          />
+          <Route
+            path="/favourites"
+            element={<FavouritePage data={favourites} />}
           />
         </Routes>
       </BrowserRouter>

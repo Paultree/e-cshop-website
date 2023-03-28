@@ -137,13 +137,14 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
 28/03/2022
 
 - Added CSS to make site more responsive for phone and tablet.
+- Added a favourites page that renders only favourited products.
 
 ## Reflection
 
 ## Future Goals
 
 - add a favourite button as a heart.
-- add a favourites page
+- add a favourites page - [x]
 - add a search function
 
 ## Further Reading

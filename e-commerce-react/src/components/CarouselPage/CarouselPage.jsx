@@ -23,7 +23,7 @@ const CarouselPage = () => {
   return (
     <Carousel
       autoPlay
-      showArrows={true}
+      showArrows={false}
       showThumbs={false}
       infiniteLoop={true}
       transitionTime={1500}

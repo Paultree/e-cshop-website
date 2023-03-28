@@ -32,6 +32,13 @@ export const getShoppingCart = async () => {
   return data;
 };
 
+export const getFavourites = async () => {
+  const data = await getProducts();
+  return data.filter((doc) => {
+    return doc.favourited === true;
+  });
+};
+
 const changeProductQuantity = async (a) => {
   const productRef = doc(db, "products", a.id);
   const updateQuantity = await updateDoc(productRef, {

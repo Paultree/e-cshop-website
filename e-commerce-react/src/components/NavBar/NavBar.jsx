@@ -10,9 +10,12 @@ const NavBar = ({ data }) => {
 
   return (
     <nav className={styles.NavBar}>
-      <h1>P R _ J E C T C L _ T H I N G </h1>
+      <h1>P R _ J E C T C L _ T H I N G</h1>
       <NavLink className={activeStyle} to="/">
         HOME
+      </NavLink>
+      <NavLink className={activeStyle} to="/favourites">
+        FAVOURITES
       </NavLink>
       <NavLink className={activeStyle} to="/cart">
         CART {data.length > 0 ? `- ${data.length}` : ""}
