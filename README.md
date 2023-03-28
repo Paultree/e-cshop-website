@@ -134,6 +134,10 @@ Using Firestore and react, create a cart system. Create a cart page in your reac
 - Also will need to rename some functions and state variables to improve readability.
 - Also try and implement some comments.
 
+28/03/2022
+
+- Added CSS to make site more responsive for phone and tablet.
+
 ## Reflection
 
 ## Future Goals

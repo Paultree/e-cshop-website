@@ -26,6 +26,7 @@ button {
 .ProductImage {
   & > img {
     width: 30rem;
+    border: 0.1rem solid black;
   }
 }
 

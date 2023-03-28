@@ -15,6 +15,11 @@
 }
 
 nav {
+  @media only screen and (max-width: 499px) {
+    font-size: 75%;
+    padding-bottom: 1rem;
+  }
+
   font-size: 1.5rem;
   background-color: black;
   padding-bottom: 2rem;
