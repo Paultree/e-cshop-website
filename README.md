@@ -6,7 +6,7 @@
 
 ## Link
 
-https://e-commerce-react-psi.vercel.app/
+https://e-commerce-react-paultree.vercel.app/
 
 ## Setup
 
